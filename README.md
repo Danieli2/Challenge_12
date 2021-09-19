@@ -1,83 +1,37 @@
 # Challenge_12
 ***
-Background
-Credit risk poses a classification problem that’s inherently imbalanced. This is because healthy loans easily outnumber risky loans. In this Challenge, you’ll use various techniques to train and evaluate models with imbalanced classes. You’ll use a dataset of historical lending activity from a peer-to-peer lending services company to build a model that can identify the creditworthiness of borrowers.
+# Module 12 Report
+***
 
-What You're Creating
-Using your knowledge of the imbalanced-learn library, you’ll use a logistic regression model to compare two versions of the dataset. First, you’ll use the original dataset. Second, you’ll resample the data by using the RandomOverSampler module from the imbalanced-learn library.
+**Overveiw of the analysis** 
 
-For both cases, you’ll get the count of the target classes, train a logistic regression classifier, calculate the balanced accuracy score, generate a confusion matrix, and generate a classification report.
+The purpose of this analysis is to use historical lending data from peer-to-peer lending to build a model which will detect and identify the credit worthiness of barrowers. The data included a loan status colunm which determined weather a loan was a healthy loan (0) or a risky loan (1). Every loan was catagorized into 1 or 0 depending on the other factors in the data set. The Value counts for the loans were unequally distributed with more healthy loans (0) than risky loans(1). The healthy loans are 75,036 and the risky loans are 2,500 This shows that there are more healthy loans than risky loan in the data set. After spliting the data set into a binary descion rule of healthy loans and Risky loans I then proceded to split the data between a test set and a train set or x_train and x_test followed by y_train and y_test. This will allow me to follow up with a logistical regression and determine accuracy and recall of the results of the data. Following up with a logistical regression requires me to make a logistical regression model with a random state of 1. I then fit the model with the train set of both x-train and y_train. Once the modle is fitted I then use the predict function on the test sets to determine the efficacy of my model at identifying healthy and risky loans. After this setep I evaluate how my model performed with the test set. I create three things to determine the efficacy of my model to identify the differing loans . first I create an balanced accuracy score followed by a confusion matrix to determine the results of the test ran by my model. The last step is to create a classification report which displays the precision score and the recall score. In total I created two logistical regression models one usig the original data and the other using the resampeling data. The two main methodes I used were the resampling methode and the logistical regression method.
+***
+**Results**
 
-As part of your GitHub repository’s README.md file, you will create a credit risk analysis report based on the template provided in your Starter_Code folder.
+Machine Learning model 1:
+This machine learning model involves a logistical regression using the the training setwhich fits the model to the data. This is followed by testing the model on the test set of data which themn is used for prediction on the test set. 
+Balanced Accuracy score: 0.95
+percision: 
+        Healthy loans :1.00
+        Risky loans : 0.85
+Recall: 
+    healthy Loans: 0.99
+    Risky loans:  0.91
+Machine learning Model 2:
+This machine learning model  invloves a logistical regression model with an added step of a resampling methode in the process to allow for the model to better learn the data set. 
+Balanced Accuracy score: 0.99
+precision:
+     Healthy loans: 1.00 
+     Risky Loans:0.84
+Recall: 
+     healthy loans:0.99
+     Risky loans:0.99
+***
+**Summary**
 
-Instructions
-This challenge consists of the following subsections:
-
-Split the Data into Training and Testing Sets
-
-Create a Logistic Regression Model with the Original Data
-
-Predict a Logistic Regression Model with Resampled Training Data
-
-Write a Credit Risk Analysis Report
-
-Split the Data into Training and Testing Sets
-Open the starter code notebook and then use it to complete the following steps.
-
-Read the lending_data.csv data from the Resources folder into a Pandas DataFrame.
-
-Create the labels set (y) from the “loan_status” column, and then create the features (X) DataFrame from the remaining columns.
-
-NOTE
-A value of 0 in the “loan_status” column means that the loan is healthy. A value of 1 means that the loan has a high risk of defaulting.
-
-Check the balance of the labels variable (y) by using the value_counts function.
-
-Split the data into training and testing datasets by using train_test_split.
-
-Create a Logistic Regression Model with the Original Data
-Employ your knowledge of logistic regression to complete the following steps:
-
-Fit a logistic regression model by using the training data (X_train and y_train).
-
-Save the predictions on the testing data labels by using the testing feature data (X_test) and the fitted model.
-
-Evaluate the model’s performance by doing the following:
-
-Calculate the accuracy score of the model.
-
-Generate a confusion matrix.
-
-Print the classification report.
-
-Answer the following question: How well does the logistic regression model predict both the 0 (healthy loan) and 1 (high-risk loan) labels?
-
-Predict a Logistic Regression Model with Resampled Training Data
-Did you notice the small number of high-risk loan labels? Perhaps, a model that uses resampled data will perform better. You’ll thus resample the training data and then reevaluate the model. Specifically, you’ll use RandomOverSampler.
-
-To do so, complete the following steps:
-
-Use the RandomOverSampler module from the imbalanced-learn library to resample the data. Be sure to confirm that the labels have an equal number of data points.
-
-Use the LogisticRegression classifier and the resampled data to fit the model and make predictions.
-
-Evaluate the model’s performance by doing the following:
-
-Calculate the accuracy score of the model.
-
-Generate a confusion matrix.
-
-Print the classification report.
-
-Answer the following question: How well does the logistic regression model, fit with oversampled data, predict both the 0 (healthy loan) and 1 (high-risk loan) labels?
-
-Write a Credit Risk Analysis Report
-For this section, you’ll write a brief report that includes a summary and an analysis of the performance of both machine learning models that you used in this challenge. You should write this report as the README.md file included in your GitHub repository.
-
-Structure your report by using the report template that Starter_Code.zip includes, and make sure that it contains the following:
-
-An overview of the analysis: Explain the purpose of this analysis.
-
-The results: Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of both machine learning models.
-
-A summary: Summarize the results from the machine learning models. Compare the two versions of the dataset predictions. Include your recommendation, if any, for the model to use the original vs. the resampled data. If you don’t recommend either model, justify your reasoning.
+Both Models performed well and can beused for prediction because of the high degree of accuracy demonastrated by both models. However if pressed to make a decision on which model performs better it would have to be model 2 because of the higher accuracy scores. meaning that the accuracy of model two is 99% while the accuracy of model one is 95%. following this it is also true the model two also has a higher recal score for risky loans which means a higher chance of idetifiying risky loans then the first model. This advatage of the second model comes from the extra layer of analysis which is the resampling method incorperated into the the second model. In this case I beleive it is more important to predict the 1 because these repersents a risky loans where as a 0 represents a healthy loans so if the model does not identify a healthy loan then no harm done but if a model fails to identify a risky loan that is a problem worse then not finging a healthy loan.  
+     
+     
+     
+     
